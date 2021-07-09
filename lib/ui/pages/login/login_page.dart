@@ -16,7 +16,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with NavigationManager {
+class _LoginPageState extends State<LoginPage>
+    with NavigationManager, LoadingManager {
   void _hideKeyboard() {
     final currentFocus = FocusScope.of(context);
     if (!currentFocus.hasPrimaryFocus) {
@@ -42,13 +43,7 @@ class _LoginPageState extends State<LoginPage> with NavigationManager {
       body: Builder(
         builder: (context) {
           handleNavigation(widget.preseneter.navigateToStream, clear: true);
-          widget.preseneter.isLoadingStream?.listen((isLoading) {
-            if (isLoading == true) {
-              showLoading(context);
-            } else {
-              hideLoading(context);
-            }
-          });
+          handleLoading(context, widget.preseneter.isLoadingStream);
 
           widget.preseneter.mainErrorStream?.listen((error) {
             showErrorMessage(context, error!);
