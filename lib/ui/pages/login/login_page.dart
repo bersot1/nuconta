@@ -17,19 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage>
-    with NavigationManager, LoadingManager {
-  void _hideKeyboard() {
-    final currentFocus = FocusScope.of(context);
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+    with NavigationManager, LoadingManager, KeyboardManager, ErrorManager {
   @override
   void dispose() {
     super.dispose();
@@ -44,13 +32,10 @@ class _LoginPageState extends State<LoginPage>
         builder: (context) {
           handleNavigation(widget.preseneter.navigateToStream, clear: true);
           handleLoading(context, widget.preseneter.isLoadingStream);
-
-          widget.preseneter.mainErrorStream?.listen((error) {
-            showErrorMessage(context, error!);
-          });
+          handleErrorManager(context, widget.preseneter.mainErrorStream);
 
           return GestureDetector(
-            onTap: _hideKeyboard,
+            onTap: () => handleHideKeyboard(context),
             child: SingleChildScrollView(
               child: SizedBox(
                 height: MediaQuery.of(context).size.height,
