@@ -25,7 +25,7 @@ class _SplashScreenPageState extends State<SplashScreenPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColorLight,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Builder(builder: (context) {
         handleNavigation(widget.presenter.navigateToStream, clear: true);
 
