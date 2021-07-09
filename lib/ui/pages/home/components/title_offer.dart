@@ -5,7 +5,7 @@ import '../../../../ui/components/components.dart';
 class TitleOffer extends StatelessWidget {
   final MediaQueryTools mediaQuery;
 
-  TitleOffer({required this.mediaQuery});
+  const TitleOffer({required this.mediaQuery});
 
   @override
   Widget build(BuildContext context) {

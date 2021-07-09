@@ -12,35 +12,32 @@ class ListOferts extends StatelessWidget {
 
   final List<OfferModel> offers;
 
-  ListOferts({required this.mediaQuery, required this.offers});
+  const ListOferts({required this.mediaQuery, required this.offers});
 
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<IHomePresenter>(context);
 
     return Expanded(
-      child: Container(
-        child: GridView.builder(
-          itemCount: offers.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 2.0,
-            crossAxisSpacing: 2.0,
-            childAspectRatio: 0.75,
-          ),
-          itemBuilder: (_, index) {
-            var item = offers[index];
-            return ItemCardOffer(
-              mediaQuery: mediaQuery,
-              // nameProduct: item.product.name,
-              // price: item.price.toDouble(),
-              // urlImage: item.product.image,
-              offer: item,
-              func: () =>
-                  _configurandoModalBottomSheet(context, item, presenter),
-            );
-          },
+      child: GridView.builder(
+        itemCount: offers.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 2.0,
+          crossAxisSpacing: 2.0,
+          childAspectRatio: 0.75,
         ),
+        itemBuilder: (_, index) {
+          final item = offers[index];
+          return ItemCardOffer(
+            mediaQuery: mediaQuery,
+            // nameProduct: item.product.name,
+            // price: item.price.toDouble(),
+            // urlImage: item.product.image,
+            offer: item,
+            func: () => _configurandoModalBottomSheet(context, item, presenter),
+          );
+        },
       ),
     );
   }
@@ -54,14 +51,14 @@ class ListOferts extends StatelessWidget {
       context: context,
       enableDrag: true,
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
       ),
       builder: (BuildContext bc) {
-        return Container(
+        return SizedBox(
           height: MediaQuery.of(context).size.height / 1.8,
           child: InteractiveViewer(
             child: Column(
@@ -70,7 +67,7 @@ class ListOferts extends StatelessWidget {
                 Center(
                   child: Container(
                     height: 10,
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     width: MediaQuery.of(context).size.width / 2.2,
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColorLight,
@@ -78,7 +75,7 @@ class ListOferts extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Center(
@@ -96,7 +93,7 @@ class ListOferts extends StatelessWidget {
                   child: Text(
                     "${offer.product.name} - R\$ ${offer.price.toDouble()}",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.bold,
@@ -105,11 +102,11 @@ class ListOferts extends StatelessWidget {
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       offer.product.description,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontFamily: 'Nunito',
                         fontWeight: FontWeight.w200,
@@ -119,7 +116,8 @@ class ListOferts extends StatelessWidget {
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
                     child: ElevatedButton(
                       onPressed: () async {
                         await presenter.buy(offer);

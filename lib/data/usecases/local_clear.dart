@@ -7,6 +7,7 @@ class LocalClear implements IClearCurrentUser {
 
   LocalClear({required this.secureCacheStorage});
 
+  @override
   Future<void> clear() async {
     try {
       await secureCacheStorage.clearSecure();

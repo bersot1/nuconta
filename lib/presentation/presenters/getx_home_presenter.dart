@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../data/models/models.dart';
-
 import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
-
-import '../mixins/mixins.dart';
 import '../../ui/ui.dart';
+import '../mixins/mixins.dart';
 
 class GetxHomePresenter extends GetxController
     with NavigationManager
@@ -19,9 +17,9 @@ class GetxHomePresenter extends GetxController
   final ISaveCurrentBalance localSaveBalance;
   final IClearCurrentUser clearCurrentUser;
 
-  var _mainError = RxnString();
-  var _ballance = RxnDouble();
-  var _isSuccessBuy = RxnBool();
+  final _mainError = RxnString();
+  final _ballance = RxnDouble();
+  final _isSuccessBuy = RxnBool();
 
   GetxHomePresenter({
     required this.httpLink,
@@ -30,6 +28,7 @@ class GetxHomePresenter extends GetxController
     required this.clearCurrentUser,
   });
 
+  @override
   ValueNotifier<GraphQLClient> client() {
     return ValueNotifier(
       GraphQLClient(
@@ -41,10 +40,14 @@ class GetxHomePresenter extends GetxController
     );
   }
 
+  @override
   Stream<String?>? get mainErrorStream => _mainError.stream;
+  @override
   Stream<double?>? get ballanceStream => _ballance.stream;
+  @override
   Stream<bool?>? get isSuccessBuyStream => _isSuccessBuy.stream;
 
+  @override
   Future<void> saveBalance(double ballance) async {
     try {
       await localSaveBalance.save(ballance);
@@ -54,6 +57,7 @@ class GetxHomePresenter extends GetxController
     }
   }
 
+  @override
   Future<void> buy(OfferModel offer) async {
     try {
       if (_ballance.value! > offer.price) {
@@ -69,6 +73,7 @@ class GetxHomePresenter extends GetxController
     }
   }
 
+  @override
   Future<void>? logout() async {
     await clearCurrentUser.clear();
     navigateTo = '/login';

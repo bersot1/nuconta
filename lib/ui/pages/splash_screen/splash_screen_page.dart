@@ -8,7 +8,7 @@ import '../../../ui/pages/pages.dart';
 class SplashScreenPage extends StatefulWidget {
   final ISplashScreenPresenter presenter;
 
-  SplashScreenPage({required this.presenter});
+  const SplashScreenPage({required this.presenter});
 
   @override
   _SplashScreenPageState createState() => _SplashScreenPageState();
@@ -27,7 +27,7 @@ class _SplashScreenPageState extends State<SplashScreenPage>
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Builder(builder: (context) {
-        handleNavigation(widget.presenter.navigateToStream, clear: true);
+        handleNavigation(widget.presenter.navigateToStream);
 
         return Center(
             child: Lottie.network(

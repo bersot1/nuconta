@@ -5,7 +5,7 @@ main() {
   late CPFValidation sut;
 
   setUp(() {
-    sut = CPFValidation('any_field');
+    sut = const CPFValidation('any_field');
   });
 
   test('Should return error if cpf is null', () {

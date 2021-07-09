@@ -8,7 +8,7 @@ class ItemCardOffer extends StatelessWidget {
   final OfferModel offer;
   final Function()? func;
 
-  ItemCardOffer({
+  const ItemCardOffer({
     required this.mediaQuery,
     // required this.urlImage,
     // required this.nameProduct,
@@ -38,14 +38,14 @@ class ItemCardOffer extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: mediaQuery.width(130),
             child: Text(
               offer.product.name,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),
@@ -53,7 +53,7 @@ class ItemCardOffer extends StatelessWidget {
           Text(
             "R\$ ${offer.price}",
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
             ),
           ),

@@ -35,12 +35,12 @@ class MediaQueryTools {
       _mediaQuery.size.height - appBarHeight;
 
   double height(double height) {
-    double percent = (((height * 100) / defaultValues.height) / 100);
+    final double percent = ((height * 100) / defaultValues.height) / 100;
     return percent * _mediaQuery.size.height;
   }
 
   double width(double width) {
-    double percent = (((width * 100) / defaultValues.width) / 100);
+    final double percent = ((width * 100) / defaultValues.width) / 100;
     return percent * _mediaQuery.size.width;
   }
 }

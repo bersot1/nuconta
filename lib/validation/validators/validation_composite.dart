@@ -6,9 +6,10 @@ class ValidationComposite implements IValidation {
 
   ValidationComposite(this.validations);
 
+  @override
   String? validate({required String field, required String value}) {
     late String? error;
-    for (var validation in validations) {
+    for (final validation in validations) {
       error = validation.validate(value);
       if (error?.isNotEmpty == true) {
         return error;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/ui/components/components.dart';
 import '../login.dart';
+import '/ui/components/components.dart';
 
 class LoginButton extends StatelessWidget {
-  LoginButton({
+  const LoginButton({
     required this.mediaQuery,
   });
 
@@ -19,7 +19,7 @@ class LoginButton extends StatelessWidget {
       builder: (context, snapshot) {
         return ElevatedButton(
             onPressed: snapshot.data == true ? presenter.auth : null,
-            child: Text('Entrar'));
+            child: const Text('Entrar'));
       },
     );
   }

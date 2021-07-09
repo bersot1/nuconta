@@ -8,7 +8,7 @@ import '../login_presenter.dart';
 
 class CPFInput extends StatelessWidget {
   final MediaQueryTools mediaQuery;
-  CPFInput({required this.mediaQuery});
+  const CPFInput({required this.mediaQuery});
 
   @override
   Widget build(BuildContext context) {

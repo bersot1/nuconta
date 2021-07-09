@@ -3,18 +3,17 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:nuconta/ui/mixins/buy_manager.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/models/models.dart';
 import '../../../ui/components/components.dart';
 import '../../../ui/helpers/constants.dart';
 import '../../../ui/mixins/mixins.dart';
 import '../../../ui/pages/home/components/components.dart';
 import '../../../ui/ui.dart';
 
-import '../../../data/models/models.dart';
-
 class HomePage extends StatefulWidget {
   final IHomePresenter presenter;
 
-  HomePage({required this.presenter});
+  const HomePage({required this.presenter});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -37,18 +36,16 @@ class _HomePageState extends State<HomePage> {
               options: QueryOptions(document: gql(query)),
               builder: (QueryResult result, {fetchMore, refetch}) {
                 if (result.hasException) {
-                  return Center(child: Text('hasExepction'));
+                  return const Center(child: Text('hasExepction'));
                 }
 
                 if (result.isLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
 
                 viewer = ViewerModel.fromJson(result.data?["viewer"]);
-
-                print(viewer.balance);
 
                 return HomeContent(
                   mediaQuery: mediaQuery,
@@ -65,7 +62,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomeContent extends StatefulWidget {
-  HomeContent({
+  const HomeContent({
     required this.mediaQuery,
     required this.viewer,
     required this.presenter,
@@ -81,7 +78,7 @@ class HomeContent extends StatefulWidget {
 
 class _HomeContentState extends State<HomeContent>
     with NavigationManager, ErrorManager, BuyManager {
-  _saveBallance() async {
+  Future<void> _saveBallance() async {
     await widget.presenter.saveBalance(widget.viewer.balance.toDouble());
   }
 
@@ -94,7 +91,7 @@ class _HomeContentState extends State<HomeContent>
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
-        handleNavigation(widget.presenter.navigateToStream, clear: true);
+        handleNavigation(widget.presenter.navigateToStream);
         _saveBallance();
         handleErrorManager(context, widget.presenter.mainErrorStream);
         handleBuyManager(context, widget.presenter.isSuccessBuyStream);

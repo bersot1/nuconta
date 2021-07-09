@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../ui/ui.dart';
 import '../../../../ui/components/components.dart';
+import '../../../../ui/ui.dart';
 
 class CardBalance extends StatelessWidget {
   final MediaQueryTools mediaQuery;
 
-  CardBalance({required this.mediaQuery});
+  const CardBalance({required this.mediaQuery});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CardBalance extends StatelessWidget {
         borderRadius: BorderRadius.circular(6),
       ),
       child: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: StreamBuilder<double?>(
             stream: presenter.ballanceStream,
             builder: (context, snapshot) {
@@ -37,7 +37,7 @@ class CardBalance extends StatelessWidget {
                       SizedBox(
                         width: mediaQuery.width(15),
                       ),
-                      Text('Saldo na Conta'),
+                      const Text('Saldo na Conta'),
                     ],
                   ),
                   SizedBox(height: mediaQuery.height(20)),

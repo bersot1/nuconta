@@ -10,7 +10,7 @@ import 'login.dart';
 class LoginPage extends StatefulWidget {
   final ILoginPresenter preseneter;
 
-  LoginPage({required this.preseneter});
+  const LoginPage({required this.preseneter});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage>
     return Scaffold(
       body: Builder(
         builder: (context) {
-          handleNavigation(widget.preseneter.navigateToStream, clear: true);
+          handleNavigation(widget.preseneter.navigateToStream);
           handleLoading(context, widget.preseneter.isLoadingStream);
           handleErrorManager(context, widget.preseneter.mainErrorStream);
 
@@ -40,13 +40,12 @@ class _LoginPageState extends State<LoginPage>
               child: SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: mediaQuery.height(200),
                     ),
-                    FlutterLogo(
+                    const FlutterLogo(
                       size: 80,
                     ),
                     Padding(
@@ -75,7 +74,7 @@ class _LoginPageState extends State<LoginPage>
                         child: LoginButton(mediaQuery: mediaQuery),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "from L.B",
                       style: Theme.of(context).textTheme.bodyText2,
@@ -84,7 +83,7 @@ class _LoginPageState extends State<LoginPage>
                       "to NuBank",
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],

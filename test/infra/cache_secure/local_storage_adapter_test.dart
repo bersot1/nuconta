@@ -38,7 +38,7 @@ main() {
 
       final future = sut.saveSecure(key: key, value: value);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -69,7 +69,7 @@ main() {
 
       final future = sut.getSecure(key: key);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -82,7 +82,7 @@ main() {
 
       final future = sut.clearSecure();
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 }

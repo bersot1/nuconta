@@ -16,8 +16,7 @@ main() {
   late String invalidCpf;
 
   When mockValidationCall(String? field) => when(() => validationSpy.validate(
-      field: field == null ? any(named: 'field') : field,
-      value: any(named: 'value')));
+      field: field ?? any(named: 'field'), value: any(named: 'value')));
 
   void mockValidation({String? field, String? value}) =>
       mockValidationCall(field).thenReturn(value);

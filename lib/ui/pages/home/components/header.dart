@@ -8,7 +8,7 @@ class Header extends StatelessWidget {
   final MediaQueryTools mediaQuery;
   final String nameUser;
 
-  Header({required this.mediaQuery, required this.nameUser});
+  const Header({required this.mediaQuery, required this.nameUser});
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +16,16 @@ class Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          child: Text(
-            nameUser,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: Theme.of(context).textTheme.headline2,
-          ),
+        Text(
+          nameUser,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+          style: Theme.of(context).textTheme.headline2,
         ),
 
         CircleAvatar(
           child: IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               presenter.logout();
             },

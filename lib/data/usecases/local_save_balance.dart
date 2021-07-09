@@ -7,6 +7,7 @@ class LocalSaveBalance implements ISaveCurrentBalance {
 
   LocalSaveBalance({required this.secureCacheStorage});
 
+  @override
   Future<void> save(double ballance) async {
     try {
       return await secureCacheStorage.saveSecure(
