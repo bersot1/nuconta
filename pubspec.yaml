@@ -1,0 +1,61 @@
+name: nuconta
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  graphql_flutter: ^5.0.0
+  equatable:
+  mask_text_input_formatter: ^2.0.0
+  provider:
+  get:
+  flutter_secure_storage: ^4.2.0
+  cpf_cnpj_validator:
+  lottie: 
+  shared_preferences:
+
+dev_dependencies:
+  flutter_native_splash: 
+  flutter_launcher_icons:
+  mocktail:
+  test:
+  faker:
+  flutter_test:
+    sdk: flutter
+
+flutter_native_splash:
+
+  color: "#6f235f"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/ui/assets/img/logo_512.png"
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+      - lib/ui/assets/img/
+      - lib/ui/assets/img/nu_splash.png
+  #   - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: lib/ui/assets/fonts/Nunito/Nunito-Regular.ttf
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
