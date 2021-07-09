@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:nuconta/ui/mixins/buy_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../ui/components/components.dart';
@@ -78,7 +79,8 @@ class HomeContent extends StatefulWidget {
   _HomeContentState createState() => _HomeContentState();
 }
 
-class _HomeContentState extends State<HomeContent> with NavigationManager {
+class _HomeContentState extends State<HomeContent>
+    with NavigationManager, ErrorManager, BuyManager {
   _saveBallance() async {
     await widget.presenter.saveBalance(widget.viewer.balance.toDouble());
   }
@@ -94,17 +96,8 @@ class _HomeContentState extends State<HomeContent> with NavigationManager {
       builder: (context) {
         handleNavigation(widget.presenter.navigateToStream, clear: true);
         _saveBallance();
-
-        widget.presenter.mainErrorStream?.listen((error) {
-          showErrorMessage(context, error!);
-        });
-
-        widget.presenter.isSuccessBuyStream?.listen((isSuccessBuy) {
-          if (isSuccessBuy != null && isSuccessBuy == false) {
-            showErrorMessage(context, "Saldo insuficiente.");
-          }
-        });
-
+        handleErrorManager(context, widget.presenter.mainErrorStream);
+        handleBuyManager(context, widget.presenter.isSuccessBuyStream);
         return SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(
