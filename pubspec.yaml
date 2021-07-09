@@ -31,8 +31,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash:
-
-  color: "#6f235f"
+  color: "#aa27f5"
 
 flutter_icons:
   android: true
