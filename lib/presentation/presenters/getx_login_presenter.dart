@@ -3,8 +3,8 @@ import 'package:get/state_manager.dart';
 import '../../../../domain/domain.dart';
 import '../../../../domain/helpers/helpers.dart';
 import '../../ui/ui.dart';
+import '../../presentation/mixins/mixins.dart';
 import '../../validation/validation.dart';
-import '../mixins/mixins.dart';
 
 class GetxLoginPresenter extends GetxController
     with NavigationManager
